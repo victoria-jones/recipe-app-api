@@ -16,13 +16,14 @@ docker-compose run --rm app sh -c "flake8"
 ```
 afte running `flake8` it is recommended to work through any errors from the bottom up. If there is no output after running `flake8` then you're good to go!
 
+This project runs tests and linting through `Github Actions` so you shouldn't need to do any of this manually. The `Github Actions` run each time code is commited to github, to see the results of the tests and linting go to `Github Actions` tab. You can still run either of these manually if you want before making a commit, just use the above code.
+
 `docker-compose.yml` has:
 ```
 args: 
     - DEV=true
 ```
  Keep this as is for development, but make sure to remove it for deployment.
-
 
 
 # Before running the project, do this for setup
@@ -48,5 +49,24 @@ docker-compose up
 ```
 
 To shutdown the server use `CTRL+C`
+sometimes you need to clear the container too and you can do that by running:
+```
+docker-compose down
+```
 
 
+# Tests
+Keep tests inside the `test` folder. All tests must be prefixed with `test_`. When writing a test you will need to import this for a basic test:
+```
+from django.test import SimpleTestCase
+```
+When writing a test for the database you will use:
+```
+from django.test import TestCase
+```
+
+## The Database
+This project uses PostgreSQL. Everything is configured and defined in docker. The network connectivity is through docker services.
+
+# Test Database
+This project uses a specific database for testing. Every time a test is run the database is wiped clean (this happens by default).
