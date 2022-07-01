@@ -6,7 +6,7 @@ recipe api project for practice
 # Some things to know
 This project is built using TDD(test driven development) using the `Django test suite`, it is built into Django. to run the test use this through docker-compose:
 ```
-docker-compose run --rm app rh -c "python manage.py test"
+docker-compose run --rm app sh -c "python manage.py test"
 ```
 
 This project also uses linting with the `flake8` package. 
