@@ -65,8 +65,8 @@ When writing a test for the database you will use:
 from django.test import TestCase
 ```
 
-## The Database
+# The Database
 This project uses PostgreSQL. Everything is configured and defined in docker. The network connectivity is through docker services.
 
-# Test Database
+## Test Database
 This project uses a specific database for testing. Every time a test is run the database is wiped clean (this happens by default).
