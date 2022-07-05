@@ -9,7 +9,7 @@ This project is built using TDD(test driven development) using the `Django test 
 docker-compose run --rm app sh -c "python manage.py test"
 ```
 
-This project also uses linting with the `flake8` package. 
+This project also uses linting with the `flake8` package.
 To use flake8 run this through docker-compose:
 ```
 docker-compose run --rm app sh -c "flake8"
@@ -20,18 +20,25 @@ This project runs tests and linting through `Github Actions` so you shouldn't ne
 
 `docker-compose.yml` has:
 ```
-args: 
+args:
     - DEV=true
 ```
  Keep this as is for development, but make sure to remove it for deployment.
 
+ ## wait_for_db
+ Sometimes when firing up docker or running commands docker will have the app up and ready to go before the database. To fix any errors from this there is a file `wait_for_db.py` that can be run before doing anything with the app. Here's an example of how to use it:
+ ```
+ docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"
+ ```
+In this example we make sure the database is running and connected before trying to make a migration
+
 
 # Before running the project, do this for setup
 This project uses Docker, first make sure Docker Desktop is running.
-Use: 
+Use:
 ```
 docker build .
-``` 
+```
 this is the initial build for your Docker container.
 
 After the intial docker build has run in order to build using created docker files run:
