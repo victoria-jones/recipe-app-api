@@ -77,3 +77,8 @@ This project uses PostgreSQL. Everything is configured and defined in docker. Th
 
 ## Test Database
 This project uses a specific database for testing. Every time a test is run the database is wiped clean (this happens by default).
+
+
+# DRF Spectacular
+This project uses DRF Spectacular to automate building the API documentation.
+This tool auto generates a schema that will be read/used by Swagger to create human readable documentation. The documentation can be reached by going to the extension in the browser: `/api/docs`

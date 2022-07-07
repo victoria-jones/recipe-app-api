@@ -27,7 +27,7 @@ class UserAdmin(BaseUserAdmin):
         (_('Important dates'), {'fields': ('last_login',)}),
     )
     readonly_fields = ['last_login']
-    add_fieldset = (
+    add_fieldsets = (
         (None, {
             'classes': ('wide',),
             'fields': (
