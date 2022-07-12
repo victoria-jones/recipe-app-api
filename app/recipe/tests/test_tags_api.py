@@ -38,7 +38,7 @@ class PublicTagsApiTests(TestCase):
 class PrivateTagsApiTest(TestCase):
     """test authenticaed api requests"""
 
-    def setUP(self):
+    def setUp(self):
         self.user = create_user()
         self.client = APIClient()
         self.client.force_authenticate(self.user)
@@ -51,7 +51,7 @@ class PrivateTagsApiTest(TestCase):
         res = self.client.get(TAGS_URL)
 
         tags = Tag.objects.all().order_by('-name')
-        serializer = TagSerializer(tags, name=True)
+        serializer = TagSerializer(tags, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
@@ -66,4 +66,4 @@ class PrivateTagsApiTest(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(len(res.data), 1)
         self.assertEqual(res.data[0]['name'], tag.name)
-        self.assertEqual(res.data[0], tag.id)
+        self.assertEqual(res.data[0]['id'], tag.id)
