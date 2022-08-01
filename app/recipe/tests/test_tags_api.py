@@ -1,7 +1,6 @@
 """
 tests for Tags API
 """
-
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.test import TestCase
@@ -40,7 +39,7 @@ class PublicTagsApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-class PrivateTagsApiTest(TestCase):
+class PrivateTagsApiTests(TestCase):
     """test authenticaed api requests"""
 
     def setUp(self):
